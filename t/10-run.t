@@ -43,14 +43,6 @@ my $tests =
 		expected => qr/^(?!.*\Qx The Perl interpreter line is correct\E)/,
 	},
 	{
-		name     => 'Catch .pm files.',
-		files    =>
-		{
-			'test.pm' => "#!perl\n\nuse strict;\n1;\n",
-		},
-		expected => qr/x The Perl interpreter line is correct/,
-	},
-	{
 		name     => 'Catch .pl files.',
 		files    =>
 		{
