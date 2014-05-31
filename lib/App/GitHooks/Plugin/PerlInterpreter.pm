@@ -6,8 +6,6 @@ use warnings;
 use base 'App::GitHooks::Plugin';
 
 # External dependencies.
-use Carp;
-use System::Command;
 use autodie qw( open close );
 
 # Internal dependencies.
