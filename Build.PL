@@ -52,7 +52,7 @@ my $builder = $class->new(
 	{
 		'App::GitHooks'        => 0,
 		'autodie'              => 0,
-		'perl'                 => 5.006,
+		'perl'                 => 5.010,
 	},
 	add_to_cleanup       =>
 	[
