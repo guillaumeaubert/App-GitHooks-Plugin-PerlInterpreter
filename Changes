@@ -1,4 +1,8 @@
 Revision history for App-GitHooks-Plugin-PerlInterpreter
 
+v1.0.1  2014-06-01
+        - Added display of incorrect interpreter lines, to help with quick
+          troubleshooting.
+
 v1.0.0  2014-05-31
         - Public release.
