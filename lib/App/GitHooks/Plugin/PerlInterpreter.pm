@@ -41,6 +41,7 @@ section of your C<.githooksrc> file.
 
 	[PerlInterpreter]
 	interpreter_regex = /^#!\/usr\/bin\/env perl$/
+	recommended_interpreter = #!/usr/bin/env perl
 
 
 =head2 interpreter_regex
@@ -49,6 +50,20 @@ A regular expression that, if matched, indicates a valid hashbang line for Perl
 scripts.
 
 	interpreter_regex = /^#!\/usr\/bin\/env perl$/
+
+
+=head2 recommended_interpreter
+
+An optional recommendation that will be displayed to the user when the hashbang
+line is not valid. This will help users fix incorrect hashbang lines.
+
+	recommended_interpreter = #!/usr/bin/env perl
+
+When this option is specified, errors will then display:
+
+	x The Perl interpreter line is correct
+	    Invalid: #!perl
+	    Recommended: #!/usr/bin/env perl
 
 
 =head1 METHODS
@@ -117,8 +132,18 @@ sub run_pre_commit_file
 	my $interpreter_regex = $config->get_regex( 'PerlInterpreter', 'interpreter_regex' );
 	die "The [PerlInterpreter] section of your config file is missing a 'interpreter_regex' key.\n"
 		if !defined( $interpreter_regex ) || ( $interpreter_regex !~ /\w/ );
-	die "$first_line\n"
-		if $first_line !~ /$interpreter_regex/;
+
+	if ( $first_line !~ /$interpreter_regex/ )
+	{
+		my $error = "Invalid: $first_line\n";
+
+		my $recommended_interpreter = $config->get( 'PerlInterpreter', 'recommended_interpreter' );
+		$error .= "Recommended: $recommended_interpreter\n"
+			if defined( $recommended_interpreter );
+
+		chomp( $error );
+		die "$error\n";
+	}
 
 	return $PLUGIN_RETURN_PASSED;
 }
