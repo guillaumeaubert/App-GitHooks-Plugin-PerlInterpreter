@@ -79,6 +79,16 @@ my $tests =
 		},
 		expected => qr/^(?!.*\QThe Perl interpreter line is correct\E)/,
 	},
+	# Test recommended interpreter.
+	{
+		name     => 'Fail interpreter check and recommend interpreter.',
+		files    =>
+		{
+			'test.pl' => "#!perl\n\nuse strict;\n1;\n",
+		},
+		config   => "recommended_interpreter = #!/usr/bin/env perl\n",
+		expected => qr|\QRecommended: #!/usr/bin/env perl\E|,
+	},
 ];
 
 # Bail out if Git isn't available.
@@ -93,10 +103,12 @@ foreach my $test ( @$tests )
 		{
 			plan( tests => 4 );
 
+			my $config = $test->{'config'} // '';
 			my $repository = ok_setup_repository(
 				cleanup_test_repository => 1,
 				config                  => '[PerlInterpreter]' . "\n"
-					. 'interpreter_regex = /^#!\/usr\/bin\/env perl$/' . "\n",
+					. 'interpreter_regex = /^#!\/usr\/bin\/env perl$/' . "\n"
+					. $config . "\n",
 				hooks                   => [ 'pre-commit' ],
 				plugins                 => [ 'App::GitHooks::Plugin::PerlInterpreter' ],
 			);
