@@ -1,8 +1,8 @@
 App-GitHooks-Plugin-PerlInterpreter
 ===================================
 
-[![Build Status](https://travis-ci.org/guillaumeaubert/App-GitHooks-Plugin-PerlInterpreter.png?branch=master)](https://travis-ci.org/guillaumeaubert/App-GitHooks-Plugin-PerlInterpreter)
-[![Coverage Status](https://coveralls.io/repos/guillaumeaubert/App-GitHooks-Plugin-PerlInterpreter/badge.png?branch=master)](https://coveralls.io/r/guillaumeaubert/App-GitHooks-Plugin-PerlInterpreter?branch=master)
+[![Build Status](https://travis-ci.org/guillaumeaubert/App-GitHooks-Plugin-PerlInterpreter.svg?branch=master)](https://travis-ci.org/guillaumeaubert/App-GitHooks-Plugin-PerlInterpreter)
+[![Coverage Status](https://coveralls.io/repos/guillaumeaubert/App-GitHooks-Plugin-PerlInterpreter/badge.svg?branch=master)](https://coveralls.io/r/guillaumeaubert/App-GitHooks-Plugin-PerlInterpreter?branch=master)
 
 App::GitHooks plugin to enforce a specific Perl interpreter on the first line
 of Perl files.
