@@ -3,24 +3,24 @@ require 5.010;
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-  'PREREQ_PM' => {
-                   'Test::More' => '0.94',
-                   'Capture::Tiny' => 0,
-                   'Test::Type' => 0,
-                   'autodie' => 0,
-                   'Test::FailWarnings' => 0,
-                   'App::GitHooks' => 0,
-                   'Git::Repository' => 0,
-                   'Test::Exception' => 0,
-                   'Test::Requires::Git' => '1.005'
-                 },
   'test' => {
               'TESTS' => 't/*.t'
             },
-  'VERSION_FROM' => 'lib/App/GitHooks/Plugin/PerlInterpreter.pm',
-  'NAME' => 'App::GitHooks::Plugin::PerlInterpreter',
-  'INSTALLDIRS' => 'site',
   'PL_FILES' => {},
-  'EXE_FILES' => []
+  'VERSION_FROM' => 'lib/App/GitHooks/Plugin/PerlInterpreter.pm',
+  'EXE_FILES' => [],
+  'NAME' => 'App::GitHooks::Plugin::PerlInterpreter',
+  'PREREQ_PM' => {
+                   'Test::Type' => 0,
+                   'Test::More' => '0.94',
+                   'Git::Repository' => 0,
+                   'App::GitHooks' => 0,
+                   'Capture::Tiny' => 0,
+                   'Test::Exception' => 0,
+                   'autodie' => 0,
+                   'Test::FailWarnings' => 0,
+                   'Test::Requires::Git' => '1.005'
+                 },
+  'INSTALLDIRS' => 'site'
 )
 ;
